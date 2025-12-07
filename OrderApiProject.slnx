@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/ApiConsume/">
+    <Project Path="ApiConsume/OrderProject.BusinessLayer/OrderProject.BusinessLayer.csproj" />
+    <Project Path="ApiConsume/OrderProject.DataAccessLayer/OrderProject.DataAccessLayer.csproj" />
+    <Project Path="ApiConsume/OrderProject.DtoLayer/OrderProject.DtoLayer.csproj" />
+    <Project Path="ApiConsume/OrderProject.EntityLayer/OrderProject.EntityLayer.csproj" />
+    <Project Path="ApiConsume/OrderProject.WebApi/OrderProject.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/Frontend/">
+    <Project Path="Frontend/OrderProject.WebUI/OrderProject.WebUI.csproj" />
+  </Folder>
+  <Folder Name="/ToDoList/" />
+</Solution>
