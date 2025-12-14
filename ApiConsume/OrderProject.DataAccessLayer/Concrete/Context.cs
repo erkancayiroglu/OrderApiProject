@@ -21,5 +21,19 @@ namespace OrderProject.DataAccessLayer.Concrete
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Staff> Staffs { get; set; }
+
+        public DbSet<About> Abouts { get; set; }
+
+        public DbSet<Booking> Bookings { get; set; }  
+        
+        public DbSet<Restaurant> Restaurants { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<MessageCategory> MessageCategories { get; set; }
+
+        public DbSet<OrderBook> OrderBooks { get; set; }
+
     }
 }

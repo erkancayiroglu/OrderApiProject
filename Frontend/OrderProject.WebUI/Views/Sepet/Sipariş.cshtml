@@ -1,0 +1,119 @@
+﻿@model OrderProject.DtoLayer.OrderDto1.OrderDetailDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sipariş Detayı</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .order-info {
+            margin-bottom: 20px;
+        }
+
+        .order-info p {
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f0f0f0;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Sipariş Detayı</h2>
+
+        <div class="order-info">
+            <p><b>Sipariş No:</b> @Model.Id</p>
+            <p><b>Sipariş Tarihi:</b> @Model.OrderDate.ToString("dd.MM.yyyy HH:mm")</p>
+            <p>
+                <b>Durum:</b>
+                <span class="status">@Model.OrderStatus</span>
+            </p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Ürün</th>
+                    <th>Adet</th>
+                    <th>Birim Fiyat</th>
+                    <th>Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderBooks)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Piece</td>
+                        <td>@item.Product.Price ₺</td>
+                        <td>@item.TotalPrice ₺</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="total">
+            Genel Toplam: @Model.TotalAmount ₺
+        </div>
+
+    </div>
+</body>
+</html>

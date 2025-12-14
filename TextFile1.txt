@@ -1,0 +1,2 @@
+1. Veri gelmediði zaman api kýsmý çok önemli
+2. Dto lar çok önemli

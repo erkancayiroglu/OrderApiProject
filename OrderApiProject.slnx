@@ -9,5 +9,7 @@
   <Folder Name="/Frontend/">
     <Project Path="Frontend/OrderProject.WebUI/OrderProject.WebUI.csproj" />
   </Folder>
-  <Folder Name="/ToDoList/" />
+  <Folder Name="/ToDoList/">
+    <File Path="TextFile1.txt" />
+  </Folder>
 </Solution>

@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_HeadPartial")
+<body style="background-color:white;">
+    <div class="container-xxl ql-bg-green p-0">
+       
+        <!-- Header Start -->
+        @await Component.InvokeAsync("_NavbarPartial")
+
+        <!-- Header End -->
+        <!-- Carousel Start -->
+        @await Component.InvokeAsync("_SliderPartial")
+        @await Component.InvokeAsync("_AboutUsPartial")
+        <!-- Carousel End -->
+
+        @await Component.InvokeAsync("_GalleryPartial")
+       
+
+       
+        <a href="#" class="btn btn-lg btn-danger btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+      
+        @await Component.InvokeAsync("_FooterPartial")
+    </div>
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("_ScriptsPartial")
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

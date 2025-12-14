@@ -1,0 +1,56 @@
+﻿@model List<ResultCategoryDto>
+
+<div class="container my-5">
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+
+        @foreach (var category in Model)
+        {
+            <a href="/Menu/Index/@category.Id"
+               class="category-pill d-flex align-items-center gap-2 px-3 py-2">
+
+                <i class="fa fa-utensils"></i>
+                <span>@category.Name</span>
+
+            </a>
+        }
+
+    </div>
+</div>
+
+<style>
+    .category-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+        scrollbar-width: none;
+    }
+
+        .category-row::-webkit-scrollbar {
+            display: none; 
+        }
+
+    .category-pill {
+        text-decoration: none;
+        background-color: #f1f3f5;
+        color: #343a40;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+        .category-pill i {
+            font-size: 0.9rem;
+            color: red;
+        }
+
+        .category-pill:hover {
+            background-color: #e9ecef;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+</style>

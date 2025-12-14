@@ -1,0 +1,27 @@
+﻿@model List<ResultCategoryDto>
+
+<div class="nk-sidebar">
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+            <li>
+                <a href="/Default/Index/"><i class="icon-plane menu-icon"></i><span class="nav-text">Siteye Git</span></a>
+            </li>
+            <li>
+                <a href="/AdminProduct/Index/"><i class="icon-magic-wand menu-icon"></i><span class="nav-text">Ürünler</span></a>
+            </li>
+            <li>
+                <a href="/AdminCategory/Index/"><i class="icon-calender menu-icon"></i><span class="nav-text">Kategoriler</span></a>
+            </li>
+            
+                @foreach (var category in Model)
+                {
+                <li> <a href="/AdminCategory/GetProductList/@category.Id"><i class=" icon-magic menu-icon"></i><span class="nav-text">@category.Name</span></a></li>
+                 }
+
+            
+           
+        </ul>
+    </div>
+</div>
+
+ 
