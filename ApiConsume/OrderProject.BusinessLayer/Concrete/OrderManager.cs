@@ -32,6 +32,11 @@ namespace OrderProject.BusinessLayer.Concrete
             return _orderDal.GetList(); 
         }
 
+        public List<OrderUserDto> TGetOrder(int userId)
+        {
+            return _orderDal.GetOrderUser(userId);
+        }
+
         public OrderDetailDto TGetOrderDetails(int id)
         {
             return _orderDal.GetOrderDetails(id);

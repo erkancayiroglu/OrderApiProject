@@ -1,4 +1,4 @@
-﻿<!-- ÜST BAR -->
+﻿
 <div class="container-fluid bg-light d-none d-lg-block">
     <div class="container">
         <div class="row py-2 align-items-center">
@@ -28,10 +28,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
     <div class="container">
 
-        <a class="navbar-brand fw-bold " style="" href="/Default/Index/">
-            Lezzet Şöleni
+        <a class="navbar-brand d-flex align-items-center"
+           href="/Default/Index/">
+
+            <img src="~/Gallery/logo2.png"
+                 alt="Lezzet Şöleni Logo"
+                 style="
+            height:75px;
+            width:auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+            transition:0.2s;
+         "
+                 onmouseover="this.style.transform='scale(1.05)'"
+                 onmouseout="this.style.transform='scale(1)'">
+
         </a>
 
+
+
+       
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarMain">
@@ -56,6 +71,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Contact/Index/">İletişim</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Order/Index/">Siparişlerim</a>
+                </li>
 
             </ul>
 
@@ -64,7 +82,7 @@
                     <i class="fa fa-shopping-cart me-1"></i> Sepet
                 </a>
 
-                <a href="/Login/Index" class="btn btn-danger btn-sm">
+                <a href="/Login/Index" class="btn btn-outline-light btn-sm">
                     Giriş
                 </a>
             </div>
@@ -73,27 +91,28 @@
     </div>
 </nav>
 <style>
-    <style >
+    <style>
     
-    .navbar-dark .navbar-nav .nav-link {
-        color: red !important;
-    }
+  
 
  
     .navbar-dark .navbar-nav .nav-link:hover {
-        color: red !important;
+        color: yellow !important;
     }
 
-    
+    .nav-item .nav-link:hover{
+        color:yellow !important;
+    }
     
 
    
 
     .btn-outline-light:hover {
-        background-color: red;
+        background-color: yellow;
         color: #000;
         
     }
+
 </style>
  
 </style>

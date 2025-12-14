@@ -1,0 +1,80 @@
+﻿@model List<OrderUserUIDto>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadPartial")
+
+<body>
+    <div class="container-xxl bg-white p-0">
+
+
+
+@await Component.InvokeAsync("_NavbarPartial")
+ @await Component.InvokeAsync("_OrderCoverPartial")
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">
+            Henüz siparişiniz bulunmamaktadır.
+        </div>
+        return;
+    }
+
+<div class="container my-5">
+    <h3 class="mb-4 fw-bold">Siparişlerim</h3>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Durum</th>
+                    <th>Toplam Tutar</th>
+                    <th class="text-center">İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <span class="badge
+                                    @(order.OrderStatus == "Hazırlanıyor" ? "bg-warning text-dark" :
+                                                                    order.OrderStatus == "Tamamlandı" ? "bg-success" :
+                                                                    "bg-secondary")">
+                                @order.OrderStatus
+                            </span>
+                        </td>
+                        <td class="fw-bold">@order.TotalAmount ₺</td>
+                        <td class="text-center">
+                            <a href="/Sepet/Sipariş/@order.Id"
+                               class="btn btn-outline-primary btn-sm">
+                                Detaylar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+    <a href="#" class="btn btn-lg btn-danger btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    @await Component.InvokeAsync("_FooterPartial")
+    </div>
+
+    <!-- JavaScript Libraries -->
+    @await Component.InvokeAsync("_ScriptsPartial")
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>

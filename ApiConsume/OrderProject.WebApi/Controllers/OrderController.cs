@@ -24,7 +24,12 @@ namespace OrderProject.WebApi.Controllers
             _orderService = orderService;
             _mapper = mapper;
         }
-
+        [HttpGet("GetOrder/{userId}")]
+        public IActionResult GetOrder(int userId)
+        {
+            var value = _orderService.TGetOrder(userId);
+            return Ok(value);
+        }
 
         [HttpPost("AddOrder")]
         public IActionResult AddOrder(CreateOrderDto dto)
@@ -44,10 +49,10 @@ namespace OrderProject.WebApi.Controllers
             var order = _orderService.TGetOrderDetails(id);
             return Ok(order);
         }
+       
 
 
-    
-        
+
 
     }
 

@@ -39,7 +39,7 @@ namespace OrderProject.WebUI.Controllers
 
             var client = _httpClientFactory.CreateClient();
 
-            // SEPETİ GETİR
+    
             var sepetResponse = await client.GetAsync(
                 $"http://localhost:5283/api/SepetItem/GetUserSepet/{userId}");
 
@@ -55,7 +55,7 @@ namespace OrderProject.WebUI.Controllers
                 return RedirectToAction("Index");
             }
 
-            // DTO
+         
             var dto = new CreateUIOrderDto
             {
                 UserId = userId,
@@ -70,29 +70,29 @@ namespace OrderProject.WebUI.Controllers
                 }).ToList()
             };
 
-            // API İÇİN JSON
+      
             var json = JsonConvert.SerializeObject(dto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            // *** SİPARİŞİ API'YE GÖNDER ***
+ 
             var orderResponse = await client.PostAsync(
                 "http://localhost:5283/api/Order/AddOrder", content);
 
             if (!orderResponse.IsSuccessStatusCode)
             {
-                // API'nin döndürdüğü hata metnini al
+        
                 var errorContent = await orderResponse.Content.ReadAsStringAsync();
 
-                // Debug için logla (console -> uygulama çıktılarına düşer)
+             
                 Console.WriteLine("Order API error: " + errorContent);
 
-                // Hata mesajını View'a geçir
+             
                 ViewBag.ApiError = errorContent;
 
                 return View("Error");
             }
 
-            // SEPETİ TEMİZLE
+          
             await client.DeleteAsync($"http://localhost:5283/api/SepetItem/ClearUserSepet/{userId}");
 
             var responseJson = await orderResponse.Content.ReadAsStringAsync();

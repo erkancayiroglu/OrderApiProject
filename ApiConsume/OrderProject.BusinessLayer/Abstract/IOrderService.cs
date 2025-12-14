@@ -11,5 +11,9 @@ namespace OrderProject.BusinessLayer.Abstract
     public interface IOrderService: IGenericService<Order>
     {
         public  OrderDetailDto TGetOrderDetails(int id);
+
+        public List<OrderUserDto> TGetOrder(int userId);
+
+
     }
 }

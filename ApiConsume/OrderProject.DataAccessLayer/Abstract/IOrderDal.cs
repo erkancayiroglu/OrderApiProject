@@ -12,5 +12,7 @@ namespace OrderProject.DataAccessLayer.Abstract
     public interface IOrderDal: IGenericDal<Order>
     {
         public OrderDetailDto GetOrderDetails(int id);
+
+        public List<OrderUserDto> GetOrderUser(int userId);
     }
 }

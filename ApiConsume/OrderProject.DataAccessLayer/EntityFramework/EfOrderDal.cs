@@ -55,6 +55,27 @@ namespace OrderProject.DataAccessLayer.EntityFramework
                 })
                 .FirstOrDefault();
         }
+        public List<OrderUserDto> GetOrderUser(int userId)
+        {
+            using var context = new Context();
+
+            return context.Orders
+                .Where(o => o.UserId == userId)
+                .Select(o => new OrderUserDto
+                {
+                    Id = o.Id,
+                    UserId = o.UserId,
+                    OrderDate = o.OrderDate,
+                    TotalAmount = o.TotalAmount,
+                    OrderStatus = o.OrderStatus
+                })
+                .OrderByDescending(o => o.OrderDate)
+                .ToList();
+        }
+
+
+
+
 
 
 
