@@ -504,6 +504,49 @@ namespace OrderProject.DataAccessLayer.Migrations
                     b.ToTable("Restaurants");
                 });
 
+            modelBuilder.Entity("OrderProject.EntityLayer.Concrete.SendEmail", b =>
+                {
+                    b.Property<int>("SendEmailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SendEmailId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiverMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SendEmailId");
+
+                    b.ToTable("SendEmails");
+                });
+
             modelBuilder.Entity("OrderProject.EntityLayer.Concrete.SepetItem", b =>
                 {
                     b.Property<int>("Id")

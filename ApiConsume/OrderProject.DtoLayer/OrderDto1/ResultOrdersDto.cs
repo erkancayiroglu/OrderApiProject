@@ -1,6 +1,4 @@
-﻿using OrderProject.DtoLayer.OrderBookDto1;
-using OrderProject.EntityLayer.Concrete;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderProject.DtoLayer.OrderDto1
 {
-    public class OrderDetailDto
+    public class ResultOrdersDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -16,8 +14,8 @@ namespace OrderProject.DtoLayer.OrderDto1
         public decimal TotalAmount { get; set; }
         public string OrderStatus { get; set; }
 
-        
+        public string Name { get; set; }
 
-        public List<OrderBookDto> OrderBooks { get; set; }
+       
     }
 }

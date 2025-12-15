@@ -28,7 +28,7 @@ namespace OrderProject.WebUI.Controllers
 
             var response = await client.PostAsync("http://localhost:5283/api/Booking", content);
 
-            // 3) Hata kontrolü
+         
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine("---- API ERROR ----");

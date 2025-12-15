@@ -9,6 +9,7 @@ using OrderProject.EntityLayer.Concrete;
 
 
 using OrderProject.WebUI.Dtos.SepetDto;
+using OrderProject.WebUI.Models.Mail;
 using System.Security.Claims;
 using System.Text;
 
@@ -59,6 +60,7 @@ namespace OrderProject.WebUI.Controllers
             var dto = new CreateUIOrderDto
             {
                 UserId = userId,
+                Email=user.Email,
                 OrderDate = DateTime.Now,
                 OrderStatus = "Onay Bekleniyor",
                 TotalAmount = sepet.TotalAmount,
@@ -99,6 +101,41 @@ namespace OrderProject.WebUI.Controllers
             dynamic result = JsonConvert.DeserializeObject(responseJson);
             int orderId = result.orderId;
 
+            var mail = new SendEmailViewModel();
+            mail.ReceiverMail = user.Email;
+            mail.ReceiverName = user.Name;
+            mail.Content = "Siparişiniz Onay Bekliyor En kısa sürede bilgi verilecektir" + "Bilginize...";
+         
+             
+            mail.OrderId = orderId;
+            mail.Title = "Sipariş Bilgisi";
+            mail.SenderMail = "erkancayiroglu02@gmail.com";
+            mail.SenderName = "Kebap ve Pide Salonu";
+
+            var client2 = _httpClientFactory.CreateClient();
+            var json2 = JsonConvert.SerializeObject(mail);
+            var content2 = new StringContent(json2, Encoding.UTF8, "application/json");
+
+
+            var orderResponse2 = await client2.PostAsync(
+                "http://localhost:5283/api/SendEmail", content2);
+
+            if (!orderResponse2.IsSuccessStatusCode)
+            {
+
+                var errorContent = await orderResponse.Content.ReadAsStringAsync();
+
+
+                Console.WriteLine("Order API error: " + errorContent);
+
+
+                ViewBag.ApiError = errorContent;
+
+                return View("Error");
+            }
+
+
+
             return RedirectToAction("Sipariş", new { id = orderId });
 
 
@@ -137,6 +174,7 @@ namespace OrderProject.WebUI.Controllers
 
             if (!response.IsSuccessStatusCode)
                 return View("Error");
+
 
             return RedirectToAction("Index");
 

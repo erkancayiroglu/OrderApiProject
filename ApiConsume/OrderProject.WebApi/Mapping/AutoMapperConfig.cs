@@ -3,6 +3,7 @@ using OrderProject.DtoLayer.About;
 using OrderProject.DtoLayer.Booking;
 using OrderProject.DtoLayer.Category;
 using OrderProject.DtoLayer.Contact;
+using OrderProject.DtoLayer.Mail;
 using OrderProject.DtoLayer.MessageCategory;
 using OrderProject.DtoLayer.OrderBookDto1;
 using OrderProject.DtoLayer.OrderDto1;
@@ -50,6 +51,9 @@ namespace OrderProject.WebApi.Mapping
 
             CreateMap<CreateOrderDto, Order>().ReverseMap();
             CreateMap<CreateOrderBookDto, OrderBook>().ReverseMap();
+
+            //SendMEssage
+            CreateMap<AddSendEmailDto, SendEmail>().ReverseMap();
 
 
         }

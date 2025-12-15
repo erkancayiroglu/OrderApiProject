@@ -40,6 +40,9 @@ builder.Services.AddScoped<ISepetItemDal, EfSepetItemDal>();
 builder.Services.AddScoped<IOrderDal, EfOrderDal>();
 builder.Services.AddScoped<IOrderService, OrderManager>();
 
+builder.Services.AddScoped<ISendEmailDal, EfSendEmailDal>();
+builder.Services.AddScoped<ISendEmailService, SendEmailManager>();
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();

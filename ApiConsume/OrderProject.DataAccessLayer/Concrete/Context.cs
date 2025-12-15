@@ -35,5 +35,9 @@ namespace OrderProject.DataAccessLayer.Concrete
 
         public DbSet<OrderBook> OrderBooks { get; set; }
 
+        public DbSet<SendEmail> SendEmails { get; set; }
+
+      
+
     }
 }

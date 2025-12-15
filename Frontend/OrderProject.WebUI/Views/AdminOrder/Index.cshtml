@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Add Product";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+@model List<OrderListDto>
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning">
+        Henüz siparişiniz bulunmamaktadır.
+    </div>
+    return;
+}
+
+<div class="container my-5">
+    <h3 class="mb-4 fw-bold">Siparişlerim</h3>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Misafir</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Durum</th>
+                    <th>Onayla</th>
+                    <th>İptal Et</th>
+                    <th>Beklet</th>
+                    <th>Güncelle</th>
+                    <th>Toplam Tutar</th>
+                    <th class="text-center">İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.Id</td>
+                        <td>@order.Name</td>
+                     
+                        <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>
+                            <span class="badge
+                                        @(order.OrderStatus == "Hazırlanıyor" ? "bg-warning text-dark" :
+                                                                                                      order.OrderStatus == "Tamamlandı" ? "bg-success" :
+                                                                                                      "bg-secondary")">
+                                @order.OrderStatus
+                            </span>
+                        </td>
+                        <td><a href="/BookingAdmin/ApprovedReservation2/@order.Id" class="btn btn-outline-primary">Onayla</a></td>
+                        <td><a href="/BookingAdmin/CancelReservation/@order.Id" class="btn btn-outline-danger">İptal Et</a></td>
+                        <td><a href="/BookingAdmin/WaitReservation/@order.Id" class="btn btn-outline-warning">Beklet</a></td>
+                        <td><a href="/BookingAdmin/UpdateBooking/@order.Id" class="btn btn-outline-info">Güncelle</a></td>
+                        <td class="fw-bold">@order.TotalAmount ₺</td>
+                        <td class="text-center">
+                            <a href="/Sepet/Sipariş/@order.Id"
+                               class="btn btn-outline-primary btn-sm">
+                                Detaylar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

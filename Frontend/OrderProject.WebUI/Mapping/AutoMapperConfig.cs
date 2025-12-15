@@ -6,6 +6,7 @@ using OrderProject.WebUI.Dtos.ContactDto;
 using OrderProject.WebUI.Dtos.LoginDto;
 using OrderProject.WebUI.Dtos.ProductDto;
 using OrderProject.WebUI.Dtos.RegisterDto;
+using OrderProject.WebUI.Models.Mail;
 
 namespace OrderProject.WebUI.Mapping
 {
@@ -32,6 +33,9 @@ namespace OrderProject.WebUI.Mapping
 
             //Contact Message
             CreateMap<Contact, CreateContactMessageDto>().ReverseMap();
+
+            //MAil
+            CreateMap<SendEmail, SendEmailViewModel>().ReverseMap();
 
         }
     }

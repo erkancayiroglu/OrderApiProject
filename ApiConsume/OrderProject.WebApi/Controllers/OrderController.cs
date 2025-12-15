@@ -49,7 +49,13 @@ namespace OrderProject.WebApi.Controllers
             var order = _orderService.TGetOrderDetails(id);
             return Ok(order);
         }
-       
+        [HttpGet("GetOrders")]
+        public IActionResult GetOrders()
+        {
+            var orders = _orderService.TGetOrders();
+            return Ok(orders);
+        }
+        
 
 
 

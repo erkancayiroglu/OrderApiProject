@@ -42,6 +42,11 @@ namespace OrderProject.BusinessLayer.Concrete
             return _orderDal.GetOrderDetails(id);
         }
 
+        public List<ResultOrdersDto> TGetOrders()
+        {
+            return _orderDal.GetOrders();
+        }
+
         public void TInsert(Order t)
         {
             _orderDal.Insert(t);

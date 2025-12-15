@@ -12,8 +12,8 @@ using OrderProject.DataAccessLayer.Concrete;
 namespace OrderProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20251212205523_Initial")]
-    partial class Initial
+    [Migration("20251215125223_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -505,6 +505,49 @@ namespace OrderProject.DataAccessLayer.Migrations
                     b.HasKey("RestaurantID");
 
                     b.ToTable("Restaurants");
+                });
+
+            modelBuilder.Entity("OrderProject.EntityLayer.Concrete.SendEmail", b =>
+                {
+                    b.Property<int>("SendEmailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SendEmailId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiverMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SendEmailId");
+
+                    b.ToTable("SendEmails");
                 });
 
             modelBuilder.Entity("OrderProject.EntityLayer.Concrete.SepetItem", b =>

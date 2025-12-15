@@ -14,6 +14,8 @@ namespace OrderProject.BusinessLayer.Abstract
 
         public List<OrderUserDto> TGetOrder(int userId);
 
+        public List<ResultOrdersDto> TGetOrders();
+
 
     }
 }

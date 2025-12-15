@@ -6,6 +6,7 @@ using OrderProject.DataAccessLayer.Concrete;
 using OrderProject.DtoLayer.OrderBookDto1;
 using OrderProject.DtoLayer.OrderDto1;
 using OrderProject.DtoLayer.Products;
+
 using OrderProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,25 @@ namespace OrderProject.DataAccessLayer.EntityFramework
                 })
                 .FirstOrDefault();
         }
+
+        public List<ResultOrdersDto> GetOrders()
+        {
+            using var context= new Context();
+
+            return context.Orders
+                .Select(o=> new ResultOrdersDto
+                {
+                    Id = o.Id,
+                    UserId = o.UserId,
+                    OrderDate = o.OrderDate,
+                    TotalAmount = o.TotalAmount,
+                    OrderStatus = o.OrderStatus,
+                    Name=o.User.Name,
+                })
+                .OrderByDescending(o => o.OrderDate)
+                .ToList();
+        }
+
         public List<OrderUserDto> GetOrderUser(int userId)
         {
             using var context = new Context();
