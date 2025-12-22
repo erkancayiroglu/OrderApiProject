@@ -7,66 +7,72 @@
             <div class="row g-5 align-items-center">
 
                 <div class="col-lg-6">
-                    
 
-                    <h1 class="mb-4 " style="color:darkblue">@item.Title</h1>
+                    <h1 class="mb-4 text-darkblue">@item.Title</h1>
 
                     <p class="mb-4">
-                        Geleneksel kebap kültürünü modern sunum anlayışıyla birleştirerek
-                        misafirlerimize eşsiz bir lezzet deneyimi sunuyoruz.
-                        Etlerimiz günlük olarak hazırlanmakta olup, ustalarımız tarafından
-                        odun ateşinde özenle pişirilmektedir.
+                        Ateşin başında ustalıkla hazırlanan kebaplarımız,
+                        her gün taze ürünlerle sofranıza ulaşıyor.
                     </p>
 
-                    <div class="row g-3 pb-4">
+                    <div class="row text-center gy-4">
 
-                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="border rounded p-1">
-                                <div class="border rounded text-center p-4">
-                                    <i class="fa fa-users fa-2x text-dark mb-2"></i>
-                                    <h2 class="mb-1" data-toggle="counter-up">@item.StaffCount</h2>
-                                    <p class="mb-0">Personel</p>
-                                </div>
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-user-tie fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.StaffCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                     PERSONEL
+                                </small>
                             </div>
                         </div>
 
-                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="border rounded p-1">
-                                <div class="border rounded text-center p-4">
-                                    <i class="fa fa-users fa-2x text-dark mb-2"></i>
-                                    <h2 class="mb-1" data-toggle="counter-up">@item.CustomerCount</h2>
-                                    <p class="mb-0">Günlük Müşteri</p>
-                                </div>
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-fire fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.CustomerCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                    MÜŞTERİ
+                                </small>
                             </div>
                         </div>
 
-                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="border rounded p-1">
-                                <div class="border rounded text-center p-4">
-                                    <i class="fa fa-utensils fa-2x text-dark mb-2"></i>
-                                    <h2 class="mb-1" data-toggle="counter-up">@item.RestourantCount</h2>
-                                    <p class="mb-0">Şube</p>
-                                </div>
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-store fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.RestourantCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                    ŞUBE
+                                </small>
                             </div>
                         </div>
 
                     </div>
 
-                    
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="row g-3">
-
-                        <div class="col-6" style="margin-left:10px">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/32T8Oja5Yn4?si=_0rQawx84Oywce2h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                        </div>
-
+                    <div class="ratio ratio-16x9 rounded shadow">
+                        <iframe src="https://www.youtube.com/embed/32T8Oja5Yn4"
+                                title="YouTube video player"
+                                allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
 
             </div>
         </div>
-    
+    </div>
 }

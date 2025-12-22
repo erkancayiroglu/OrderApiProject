@@ -1,4 +1,5 @@
 ﻿using HotelProject.DataAccessLayer.Repositories;
+using MailKit.Search;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OrderProject.DataAccessLayer.Abstract;
@@ -93,12 +94,15 @@ namespace OrderProject.DataAccessLayer.EntityFramework
                 .ToList();
         }
 
+        public void OrderStatusChangeApproved(int id)
+        {
+            var context = new Context();
+            var order = context.Orders.Where(x => x.Id == id).FirstOrDefault();
+            order.OrderStatus = "Onaylandı";
+            context.SaveChanges();
 
 
-
-
-
-
+        }
     }
     
 }

@@ -16,6 +16,8 @@ namespace OrderProject.BusinessLayer.Abstract
 
         public List<ResultOrdersDto> TGetOrders();
 
+        public void TOrderStatusChangeApproved(int id);
+
 
     }
 }

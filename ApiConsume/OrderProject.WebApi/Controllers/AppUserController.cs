@@ -21,5 +21,11 @@ namespace OrderProject.WebApi.Controllers
             var values = _appUserService.TGetList();
             return Ok(values);
         }
+        [HttpGet("GetUser/{id}")]
+        public IActionResult GetUser(int id)
+        {
+            var value = _appUserService.TGetById(id);
+            return Ok(value);
+        }
     }
 }

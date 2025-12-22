@@ -16,5 +16,7 @@ namespace OrderProject.DataAccessLayer.Abstract
         public List<OrderUserDto> GetOrderUser(int userId);
 
         public List<ResultOrdersDto> GetOrders();
+
+        public void OrderStatusChangeApproved(int id);
     }
 }

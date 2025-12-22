@@ -49,7 +49,12 @@
                                 @order.OrderStatus
                             </span>
                         </td>
-                        <td><a href="/BookingAdmin/ApprovedReservation2/@order.Id" class="btn btn-outline-primary">Onayla</a></td>
+                        <td>
+                            <a href="/AdminOrder/OrderApproved?id=@order.Id&userId=@order.UserId"
+                               class="btn btn-outline-primary">
+                                Onayla
+                            </a>
+                        </td>
                         <td><a href="/BookingAdmin/CancelReservation/@order.Id" class="btn btn-outline-danger">İptal Et</a></td>
                         <td><a href="/BookingAdmin/WaitReservation/@order.Id" class="btn btn-outline-warning">Beklet</a></td>
                         <td><a href="/BookingAdmin/UpdateBooking/@order.Id" class="btn btn-outline-info">Güncelle</a></td>

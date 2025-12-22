@@ -52,6 +52,11 @@ namespace OrderProject.BusinessLayer.Concrete
             _orderDal.Insert(t);
         }
 
+        public void TOrderStatusChangeApproved(int id)
+        {
+            _orderDal.OrderStatusChangeApproved(id);
+        }
+
         public void TUpdate(Order t)
         {
             _orderDal.Update(t);

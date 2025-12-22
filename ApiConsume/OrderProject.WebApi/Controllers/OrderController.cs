@@ -55,6 +55,14 @@ namespace OrderProject.WebApi.Controllers
             var orders = _orderService.TGetOrders();
             return Ok(orders);
         }
+
+        [HttpGet("ApprovedOrder/{id}")]
+        public IActionResult ApprovedOrder(int id)
+
+        {
+            _orderService.TOrderStatusChangeApproved(id);
+            return Ok();
+        }
         
 
 
