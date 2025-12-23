@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderProject.DtoLayer.Booking
+﻿namespace OrderProject.WebUI.Dtos.BookingDto
 {
-    public class CreateBookingDto
+    public class ResultBookingDto
     {
+        public int BookingID { get; set; }
         public string Name { get; set; }
         public string UserMail { get; set; }
 
@@ -18,7 +13,7 @@ namespace OrderProject.DtoLayer.Booking
 
         public string BookingDay { get; set; }
 
-        public string? Status { get; set; }
+        public string Status { get; set; }
 
         public string RestaurantName { get; set; }
 

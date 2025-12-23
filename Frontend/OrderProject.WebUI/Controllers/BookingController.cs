@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using OrderProject.DtoLayer.Booking;
 using OrderProject.WebUI.Dtos.BookingDto;
 using OrderProject.WebUI.Dtos.ProductDto;
 using System.Text;
@@ -39,7 +40,7 @@ namespace OrderProject.WebUI.Controllers
                 var apiMessage = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("Content: " + apiMessage);
 
-                return View(createBookingDto);
+                  return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");

@@ -6,6 +6,7 @@ using OrderProject.WebUI.Dtos.ProductDto;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     [Authorize(Roles = "Admin")]
     public class AdminUsersController : Controller
     {

@@ -10,7 +10,8 @@ using System.Text;
 
 namespace OrderProject.WebUI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+
+    [Authorize(Roles = "Yönetici")]
     public class AdminProductController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

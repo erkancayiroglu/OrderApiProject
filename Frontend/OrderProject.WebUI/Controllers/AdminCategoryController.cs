@@ -9,6 +9,7 @@ using System.Text;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     [Authorize(Roles = "Admin")]
     public class AdminCategoryController : Controller
     {

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     [Authorize(Roles ="Admin")]
     public class RoleAssignController : Controller
     {

@@ -53,7 +53,7 @@ namespace OrderProject.WebUI.Controllers
             
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);//Şifre tokeni
             var url = Url.Action("ResetPassword", "Account", new { Id = user.Id, token }, Request.Scheme);
-            string emailBody = $"Lütfen email onayınız <a href='{url}'>tıklayın</a>"; //url oluşturup resete yönlendirdim.
+            string emailBody = $"Lütfen şifrenizi sıfırlamak için <a href='{url}'>tıklayın</a>"; //url oluşturup resete yönlendirdim.
             var mail = new SendEmailViewModel();
             mail.ReceiverMail = user.Email;
             mail.ReceiverName = user.Name;
@@ -63,7 +63,7 @@ namespace OrderProject.WebUI.Controllers
 
             mail.Title = "Şifre Sıfırlama";
             mail.SenderMail = "erkancayiroglu02@gmail.com";
-            mail.SenderName = "Kebap ve Pide Salonu";
+            mail.SenderName = "Kebap ve Pide Restoran";
 
             var client = _httpClientFactory.CreateClient();
             var json = JsonConvert.SerializeObject(mail);

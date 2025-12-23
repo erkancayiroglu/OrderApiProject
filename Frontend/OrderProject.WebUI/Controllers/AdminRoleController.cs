@@ -6,6 +6,7 @@ using OrderProject.WebUI.Models.Role;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     [Authorize(Roles = "Admin")]
     public class AdminRoleController : Controller
     {
