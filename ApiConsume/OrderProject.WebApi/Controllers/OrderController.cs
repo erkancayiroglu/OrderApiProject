@@ -63,9 +63,27 @@ namespace OrderProject.WebApi.Controllers
             _orderService.TOrderStatusChangeApproved(id);
             return Ok();
         }
-        
 
+        [HttpGet("PrepareOrder/{id}")]//Hazırlanıyor
 
+        public IActionResult PrepareOrder(int id)
+        {
+            _orderService.TOrderStatusChangePrepare(id);
+            return Ok();
+        }
+
+        [HttpGet("WayOrder/{id}")]//Yolda
+        public IActionResult WayOrder(int id)
+        {
+            _orderService.TOrderStatusChangeWay(id);
+            return Ok();
+        }
+        [HttpGet("DeliverOrder/{id}")]//Teslim Edildi
+        public IActionResult DeliverOrder(int id)
+        {
+            _orderService.TOrderStatusChangeDeliver(id);
+            return Ok();
+        }
 
 
     }

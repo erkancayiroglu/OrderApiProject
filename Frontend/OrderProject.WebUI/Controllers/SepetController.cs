@@ -15,8 +15,8 @@ using System.Text;
 
 namespace OrderProject.WebUI.Controllers
 {
-
-    public class SepetController : Controller
+    [Authorize(Roles ="Müşteri")]
+    public class SepetController : Controller  
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly UserManager<AppUser> _userManager;
@@ -62,7 +62,7 @@ namespace OrderProject.WebUI.Controllers
                 UserId = userId,
                 Email=user.Email,
                 OrderDate = DateTime.Now,
-                OrderStatus = "Onay Bekleniyor",
+                OrderStatus = "Onay Bekliyor",
                 TotalAmount = sepet.TotalAmount,
                 OrderBooks = sepet.SepetItems.Select(x => new CreateOrderBookDto
                 {

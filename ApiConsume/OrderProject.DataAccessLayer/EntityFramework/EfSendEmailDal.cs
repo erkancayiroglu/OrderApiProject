@@ -31,11 +31,42 @@ namespace OrderProject.DataAccessLayer.EntityFramework
             mimeMessage.Subject = sendEmail.Title;
 
             mimeMessage.Body = new TextPart("plain")
-            {
+            { 
                 Text = sendEmail.Content
             };
 
             SmtpClient  client = new SmtpClient();
+
+            client.Connect("smtp.gmail.com", 587, false);
+            client.Authenticate(
+                "erkancayiroglu02@gmail.com",
+                "fjaxcnmuqzxfeuhp"
+            );
+
+            client.Send(mimeMessage);
+            client.Disconnect(true);
+        }
+
+        public void PasswordSendEmail(AddSendEmailDto sendEmail)
+        {
+            var mimeMessage = new MimeMessage();
+
+            mimeMessage.From.Add(new MailboxAddress(
+                sendEmail.SenderName,
+                sendEmail.SenderMail));
+
+            mimeMessage.To.Add(new MailboxAddress(
+                sendEmail.ReceiverName,
+                sendEmail.ReceiverMail));
+
+            mimeMessage.Subject = sendEmail.Title;
+
+            mimeMessage.Body = new TextPart("html")
+            {
+                Text = sendEmail.Content
+            };
+
+            SmtpClient client = new SmtpClient();
 
             client.Connect("smtp.gmail.com", 587, false);
             client.Authenticate(

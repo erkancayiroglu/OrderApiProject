@@ -4,19 +4,60 @@
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
             <li>
-                <a href="/Default/Index/"><i class="icon-plane menu-icon"></i><span class="nav-text">Siteye Git</span></a>
-            </li>
+    <a href="/Default/Index/">
+        <i class="fa fa-home menu-icon"></i>
+        <span class="nav-text">Siteye Git</span>
+    </a>
+</li>
+
             <li>
-                <a href="/AdminProduct/Index/"><i class="icon-magic-wand menu-icon"></i><span class="nav-text">Ürünler</span></a>
+                <a href="/AdminProduct/Index/">
+                    <i class="fas fa-box-open menu-icon"></i>
+                    <span class="nav-text">Ürünler</span>
+                </a>
             </li>
+<li>
+    <a href="/AdminCategory/Index/">
+        <i class="fa fa-tags menu-icon"></i>
+        <span class="nav-text">Kategoriler</span>
+    </a>
+</li>
+
+@foreach (var category in Model)
+{
+    <li>
+        <a href="/AdminCategory/GetProductList/@category.Id">
+            <i class="fa fa-tag menu-icon"></i>
+            <span class="nav-text">@category.Name</span>
+        </a>
+    </li>
+}
+
+<li>
+    <a href="/AdminOrder/Index/">
+        <i class="fas fa-receipt menu-icon"></i>
+        <span class="nav-text">Siparişler</span>
+    </a>
+</li>
+<li>
+    <a href="/AdminUsers/Index/">
+                    <i class="fas fa-users menu-icon"></i>
+        <span class="nav-text">Kullanıcılar</span>
+    </a>
+</li>
             <li>
-                <a href="/AdminCategory/Index/"><i class="icon-calender menu-icon"></i><span class="nav-text">Kategoriler</span></a>
+                <a href="/AdminRole/Index/">
+                    <i class="fas fa-user-shield menu-icon"></i>
+                    <span class="nav-text">Roller</span>
+                </a>
             </li>
-            
-                @foreach (var category in Model)
-                {
-                <li> <a href="/AdminCategory/GetProductList/@category.Id"><i class=" icon-magic menu-icon"></i><span class="nav-text">@category.Name</span></a></li>
-                 }
+<li>
+    <a href="/RoleAssign/Index/">
+                    <i class="fas fa-user-tag menu-icon"></i>
+        <span class="nav-text">Rol Atama</span>
+    </a>
+</li>
+
 
             
            

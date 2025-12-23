@@ -103,6 +103,34 @@ namespace OrderProject.DataAccessLayer.EntityFramework
 
 
         }
+
+        public void OrderStatusChangePrepare(int id)
+        {
+            var context = new Context();
+            var order = context.Orders.Where(x => x.Id == id).FirstOrDefault();
+            order.OrderStatus = "Hazırlanıyor";
+            context.SaveChanges();
+
+
+        }
+        public void OrderStatusChangeWay(int id)
+        {
+            var context = new Context();
+            var order = context.Orders.Where(x => x.Id == id).FirstOrDefault();
+            order.OrderStatus = "Yolda";
+            context.SaveChanges();
+
+
+        }
+        public void OrderStatusChangeDeliver(int id)
+        {
+            var context = new Context();
+            var order = context.Orders.Where(x => x.Id == id).FirstOrDefault();
+            order.OrderStatus = "Teslim Edildi";
+            context.SaveChanges();
+
+
+        }
     }
     
 }

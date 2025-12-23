@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using OrderProject.EntityLayer.Concrete;
 using OrderProject.WebUI.Dtos.LoginDto;
@@ -36,5 +37,13 @@ namespace OrderProject.WebUI.Controllers
             }
             return View(loginUserDto);
         }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Default");
+        }
+        
+
     }
 }

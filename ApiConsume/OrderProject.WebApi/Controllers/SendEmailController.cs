@@ -38,5 +38,15 @@ namespace OrderProject.WebApi.Controllers
             _sendEmailService.TInsert(value);
             return Ok();
         }
+        [HttpPost("ForgotPassword")]
+        public IActionResult PasswordSendEmail(AddSendEmailDto addSendEmailDto)
+        {
+            
+            _sendEmailService.TPasswordSendEmail(addSendEmailDto);
+            
+
+         
+            return Ok();
+        }
     }
 }

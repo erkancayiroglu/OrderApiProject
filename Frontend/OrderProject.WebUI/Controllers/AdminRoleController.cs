@@ -6,7 +6,7 @@ using OrderProject.WebUI.Models.Role;
 
 namespace OrderProject.WebUI.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class AdminRoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
@@ -39,7 +39,7 @@ namespace OrderProject.WebUI.Controllers
         }
         public async Task<IActionResult> DeleteRole(int id)
         {
-            var value = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
+            var value =  _roleManager.Roles.FirstOrDefault(x => x.Id == id);
             await _roleManager.DeleteAsync(value);
             return RedirectToAction("Index");
         }

@@ -47,6 +47,10 @@ namespace OrderProject.BusinessLayer.Concrete
         {
            _sendEmailDal.Update(t);
         }
-    
+
+        public void TPasswordSendEmail(AddSendEmailDto sendEmail)
+        {
+            _sendEmailDal.PasswordSendEmail(sendEmail);
+        }
     }
 }

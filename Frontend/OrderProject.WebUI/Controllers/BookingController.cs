@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OrderProject.WebUI.Dtos.BookingDto;
 using OrderProject.WebUI.Dtos.ProductDto;
@@ -6,6 +7,7 @@ using System.Text;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BookingController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

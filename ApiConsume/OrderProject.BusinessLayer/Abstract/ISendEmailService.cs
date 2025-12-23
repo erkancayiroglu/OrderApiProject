@@ -11,5 +11,7 @@ namespace OrderProject.BusinessLayer.Abstract
     public interface ISendEmailService:IGenericService<SendEmail>
     {
         public void TAddSendEmail(AddSendEmailDto sendEmail);
+
+        public void TPasswordSendEmail(AddSendEmailDto sendEmail);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OrderProject.EntityLayer.Concrete;
 using OrderProject.WebUI.Dtos.CategoryDto;
@@ -8,6 +9,7 @@ using System.Text;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminCategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory; 

@@ -19,6 +19,6 @@ namespace OrderProject.DtoLayer.Mail
    
         public DateTime Date { get; set; }
 
-        public int OrderId { get; set; }    
+        public int? OrderId { get; set; }    
     }
 }

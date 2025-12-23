@@ -9,7 +9,7 @@ using static NuGet.Packaging.PackagingConstants;
 
 namespace OrderProject.WebUI.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles ="Müşteri")]
     public class OrderController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

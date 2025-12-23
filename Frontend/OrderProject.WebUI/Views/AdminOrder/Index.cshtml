@@ -25,8 +25,10 @@
                     <th>Durum</th>
                     <th>Onayla</th>
                     <th>İptal Et</th>
-                    <th>Beklet</th>
-                    <th>Güncelle</th>
+                    <th>Hazırlanıyor</th>
+                    <th>Yolda</th>
+                    <th>Teslim Edildi</th>
+      
                     <th>Toplam Tutar</th>
                     <th class="text-center">İşlem</th>
                 </tr>
@@ -42,22 +44,56 @@
                      
                         <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
                         <td>
-                            <span class="badge
-                                        @(order.OrderStatus == "Hazırlanıyor" ? "bg-warning text-dark" :
-                                                                                                      order.OrderStatus == "Tamamlandı" ? "bg-success" :
-                                                                                                      "bg-secondary")">
+                            <span class="badge px-3 py-2
+            @(order.OrderStatus == "Onay Bekliyor" ? "bg-success" :
+                                            order.OrderStatus == "Onaylandı" ? "bg-light" :
+                                            order.OrderStatus == "Hazırlanıyor" ? "bg-warning text-dark" :
+                                            order.OrderStatus == "Yolda" ? "bg-info text-dark" :
+                                            order.OrderStatus == "Teslim Edildi" ? "bg-success" :
+                                            order.OrderStatus == "İptal Edildi" ? "bg-danger" :
+                                                                                  "bg-dark")">
+
+                                @* İkonlar *@
+                                @if (order.OrderStatus == "Onay Bekliyor")
+                                {
+                                    <i class="fa fa-hourglass-half me-1"></i>
+                                }
+                                else if (order.OrderStatus == "Onaylandı")
+                                {
+                                    <i class="fa fa-check-circle me-1"></i>
+                                }
+                                else if (order.OrderStatus == "Hazırlanıyor")
+                                {
+                                    <i class="fa fa-utensils me-1"></i>
+                                }
+                                else if (order.OrderStatus == "Yolda")
+                                {
+                                    <i class="fa fa-motorcycle me-1"></i>
+                                }
+                                else if (order.OrderStatus == "Teslim Edildi")
+                                {
+                                    <i class="fa fa-box-open me-1"></i>
+                                }
+                                else if (order.OrderStatus == "İptal Edildi")
+                                {
+                                    <i class="fa fa-times-circle me-1"></i>
+                                }
+
                                 @order.OrderStatus
                             </span>
                         </td>
+
                         <td>
                             <a href="/AdminOrder/OrderApproved?id=@order.Id&userId=@order.UserId"
                                class="btn btn-outline-primary">
                                 Onayla
                             </a>
                         </td>
-                        <td><a href="/BookingAdmin/CancelReservation/@order.Id" class="btn btn-outline-danger">İptal Et</a></td>
-                        <td><a href="/BookingAdmin/WaitReservation/@order.Id" class="btn btn-outline-warning">Beklet</a></td>
-                        <td><a href="/BookingAdmin/UpdateBooking/@order.Id" class="btn btn-outline-info">Güncelle</a></td>
+                        <td><a href="/AdminOrder/OrderApproved?id=@order.Id&userId=@order.UserId" class="btn btn-outline-danger">İptal Et</a></td>
+                        <td><a href="/AdminOrder/PrepareOrder?id=@order.Id&userId=@order.UserId" class="btn btn-outline-warning">Hazırlanıyor</a></td>
+                        <td><a href="/AdminOrder/WayOrder?id=@order.Id&userId=@order.UserId" class="btn btn-outline-info">Yolda</a></td>
+                        <td><a href="/AdminOrder/DeliverOrder?id=@order.Id&userId=@order.UserId" class="btn btn-outline-success">Teslim Edildi</a></td>
+                     
                         <td class="fw-bold">@order.TotalAmount ₺</td>
                         <td class="text-center">
                             <a href="/Sepet/Sipariş/@order.Id"

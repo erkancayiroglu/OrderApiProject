@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using OrderProject.WebUI.Dtos.AdminUserDto;
 using OrderProject.WebUI.Dtos.ProductDto;
 
 namespace OrderProject.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminUsersController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory; 

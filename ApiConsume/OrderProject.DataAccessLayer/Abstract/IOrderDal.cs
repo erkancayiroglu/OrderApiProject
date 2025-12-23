@@ -18,5 +18,11 @@ namespace OrderProject.DataAccessLayer.Abstract
         public List<ResultOrdersDto> GetOrders();
 
         public void OrderStatusChangeApproved(int id);
+
+        public void OrderStatusChangePrepare(int id);
+
+        public void OrderStatusChangeWay(int id);
+
+        public void OrderStatusChangeDeliver(int id);
     }
 }
