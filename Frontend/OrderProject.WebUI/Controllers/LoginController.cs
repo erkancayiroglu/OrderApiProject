@@ -21,20 +21,27 @@ namespace OrderProject.WebUI.Controllers
             return View();
         }
         [HttpPost]
+       
         public async Task<IActionResult> Index(LoginUserDto loginUserDto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginUserDto.Username, loginUserDto.Password, false, false);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Default");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Geçersiz kullanıcı adı veya şifre.");
-                }
+                return View(loginUserDto);
             }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                loginUserDto.Username,
+                loginUserDto.Password,
+                false,
+                false
+            );
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Default");
+            }
+
+            ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı.");
             return View(loginUserDto);
         }
         [HttpGet]

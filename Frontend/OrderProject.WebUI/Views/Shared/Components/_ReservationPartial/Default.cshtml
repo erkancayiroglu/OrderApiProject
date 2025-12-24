@@ -8,6 +8,7 @@
         </div>
 
         <form method="post"  asp-action="AddBooking" asp-controller="Booking">
+          
             <div class="row g-3">
 
              
@@ -15,6 +16,7 @@
                     <div class="form-floating">
                         <input type="text" class="form-control" asp-for="Name" placeholder="Adınız Soyadınız">
                         <label>Adınız Soyadınız</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -23,6 +25,7 @@
                     <div class="form-floating">
                         <input type="email" class="form-control" asp-for="UserMail" placeholder="Mail Adresiniz">
                         <label>Mail Adresiniz</label>
+                        <span asp-validation-for="UserMail" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -31,6 +34,7 @@
                     <div class="form-floating">
                         <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Telefon Numaranız">
                         <label>Telefon Numaranız</label>
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -70,6 +74,7 @@
                     <div class="form-floating">
                         <textarea class="form-control" asp-for="Message" style="height:120px;"></textarea>
                         <label>Not / Özel İstek</label>
+                        <span asp-validation-for="Message" class="text-danger"></span>
                     </div>
                 </div>
 

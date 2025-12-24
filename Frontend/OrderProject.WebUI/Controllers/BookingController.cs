@@ -24,7 +24,11 @@ namespace OrderProject.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBooking(Create2BookingDto createBookingDto)
         {
-         
+            if (!ModelState.IsValid)
+            {
+                return View("Index", createBookingDto);
+            }
+
             var client = _httpClientFactory.CreateClient();
             var json = JsonConvert.SerializeObject(createBookingDto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");

@@ -1,8 +1,10 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using OrderProject.DataAccessLayer.Concrete;
 using OrderProject.EntityLayer.Concrete;
+
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,11 @@ builder.Services.AddMvc(config =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddControllersWithViews()
+    .AddFluentValidation(fv =>
+    {
+        fv.RegisterValidatorsFromAssemblyContaining<CreateRegisterValidator>();
+    });
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
