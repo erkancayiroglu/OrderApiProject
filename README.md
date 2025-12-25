@@ -1,10 +1,10 @@
-📦 OrderApiProject –  Api Tabanlı Sipariş ve Rezervasyon  Sistemi (ASP.NET Core Web API)
+📦 OrderApiProject – API Tabanlı Sipariş ve Rezervasyon Sistemi (ASP.NET Core Web API)
 📝 Proje Hakkında
 
-OrderApi, ASP.NET Core Web API kullanılarak geliştirilmiş,
-%100 API tabanlı bir Sipariş Yönetim Sistemidir.
+OrderApiProject, ASP.NET Core Web API kullanılarak geliştirilmiş,
+%100 API tabanlı bir Sipariş ve Rezervasyon Yönetim Sistemidir.
 
-Proje kapsamında; kullanıcıların ürünleri sepete ekleyebildiği, sipariş oluşturabildiği ve sipariş süreçlerinin güvenli şekilde yönetilebildiği ölçeklenebilir bir backend mimarisi oluşturulmuştur.
+Proje kapsamında; kullanıcıların ürünleri sepete ekleyebildiği, sipariş oluşturabildiği ve belirli tarih/saat için rezervasyon yapabildiği, tüm süreçlerin güvenli ve kontrollü şekilde yönetildiği ölçeklenebilir bir backend mimarisi oluşturulmuştur.
 
 Tüm iş akışları RESTful API üzerinden yürütülmektedir.
 
@@ -22,9 +22,17 @@ JWT (JSON Web Token)
 
 Repository Pattern
 
-DTO Pattern
+DTO & AutoMapper
+
+ViewComponent & Partial View
+
+Identity & Role Management
+
+Fluent Validation (Sunucu tarafı güçlü veri doğrulama)
 
 Dependency Injection
+
+IHttpClientFactory
 
 Swagger / OpenAPI
 
