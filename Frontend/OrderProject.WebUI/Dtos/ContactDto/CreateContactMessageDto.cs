@@ -1,12 +1,26 @@
-﻿namespace OrderProject.WebUI.Dtos.ContactDto
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OrderProject.WebUI.Dtos.ContactDto
 {
     public class CreateContactMessageDto
     {
-        public string Name { get; set; }
-        public string Mail { get; set; }
-        public string Subject { get; set; }
-        public string Message { get; set; }
-        public DateTime Date { get; set; }
-        public int MessageCategoryID { get; set; }
+      
+            [Required(ErrorMessage = "Adınızı Soyadınızı giriniz.")]
+            public string Name { get; set; }
+
+            [Required(ErrorMessage = "Mail adresinizi giriniz.")]
+            [EmailAddress(ErrorMessage = "Geçerli bir email adresi giriniz.")]
+            public string Mail { get; set; }
+
+            [Required(ErrorMessage = "Lütfen bir kategori seçin.")]
+            public int MessageCategoryID { get; set; }
+
+            [Required(ErrorMessage = "Konu başlığını giriniz.")]
+            public string Subject { get; set; }
+
+            [Required(ErrorMessage = "Mesajınızı yazınız.")]
+            [MinLength(10, ErrorMessage = "Mesajınız en az 10 karakter olmalıdır.")]
+            public string Message { get; set; }
+        
     }
 }

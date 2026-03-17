@@ -19,22 +19,23 @@ namespace OrderProject.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ContactMessage(CreateContactMessageDto createContactMessageDto)
+        public async Task<IActionResult> ContactMessage([FromBody] CreateContactMessageDto createContactMessageDto)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var client = _httpClientFactory.CreateClient();
             var json = JsonConvert.SerializeObject(createContactMessageDto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("http://localhost:5283/api/Contact", content);
-           
+
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("---- API ERROR ----");
-                Console.WriteLine("Status: " + response.StatusCode);
                 var apiMessage = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Content: " + apiMessage);
-                return View(createContactMessageDto);
+                return StatusCode((int)response.StatusCode, apiMessage);
             }
-            return RedirectToAction("Index");
+
+            return Ok();
         }
 
     }
