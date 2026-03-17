@@ -22,12 +22,10 @@ namespace OrderProject.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddBooking(Create2BookingDto createBookingDto)
+        public async Task<IActionResult> AddBooking([FromBody] Create2BookingDto createBookingDto)
         {
             if (!ModelState.IsValid)
-            {
-                return View("Index", createBookingDto);
-            }
+                return BadRequest("Form verileri geçersiz.");
 
             var client = _httpClientFactory.CreateClient();
             var json = JsonConvert.SerializeObject(createBookingDto);
@@ -35,19 +33,41 @@ namespace OrderProject.WebUI.Controllers
 
             var response = await client.PostAsync("http://localhost:5283/api/Booking", content);
 
-         
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("---- API ERROR ----");
-                Console.WriteLine("Status: " + response.StatusCode);
-
                 var apiMessage = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Content: " + apiMessage);
-
-                  return RedirectToAction("Index");
+                return StatusCode((int)response.StatusCode, apiMessage);
             }
 
-            return RedirectToAction("Index");
+            return Ok("Rezervasyonunuz alındı.");
         }
+        //[HttpPost]
+        //public async Task<IActionResult> AddBooking(Create2BookingDto createBookingDto)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View("Index", createBookingDto);
+        //    }
+
+        //    var client = _httpClientFactory.CreateClient();
+        //    var json = JsonConvert.SerializeObject(createBookingDto);
+        //    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        //    var response = await client.PostAsync("http://localhost:5283/api/Booking", content);
+
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        Console.WriteLine("---- API ERROR ----");
+        //        Console.WriteLine("Status: " + response.StatusCode);
+
+        //        var apiMessage = await response.Content.ReadAsStringAsync();
+        //        Console.WriteLine("Content: " + apiMessage);
+
+        //          return RedirectToAction("Index");
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }

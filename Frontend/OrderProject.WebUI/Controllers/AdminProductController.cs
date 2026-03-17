@@ -97,15 +97,19 @@ namespace OrderProject.WebUI.Controllers
             return View(updateProductDto);
         }
 
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responsMessage = await client.DeleteAsync($"http://localhost:5283/api/Product/{id}");
-            if (responsMessage.IsSuccessStatusCode)
+            var responseMessage = await client.DeleteAsync($"http://localhost:5283/api/Product/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                // Başarılıysa HTTP 200 (Ok) dönüyoruz, yönlendirme yapmıyoruz.
+                return Ok();
             }
-            return View();
+            // Başarısızsa HTTP 400 (Hata) dönüyoruz.
+            return BadRequest();
         }
         [HttpGet]
         public async Task<IActionResult> AddProduct()

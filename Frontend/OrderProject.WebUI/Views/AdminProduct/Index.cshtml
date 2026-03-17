@@ -14,7 +14,7 @@
     <div class="d-flex flex-wrap gap-4 justify-content-start">
         @foreach (var product in Model)
         {
-            <div class="card shadow-sm mr-3" style="width: 18rem;">
+            <div class="card shadow-sm mr-3" style="width: 18rem;" id="card-@product.Id">
                 <img src="~/productImages/@product.ImageUrl" class="card-img-top" alt="@product.Name" onerror="this.onerror=null; this.src='~/img/default-image.png';" />
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title text-truncate" title="@product.Name">@product.Name</h5>
@@ -25,10 +25,11 @@
                             <div class="mt-auto">
                                 
                                 <a asp-controller="AdminProduct" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary btn-sm me-2">Düzenle</a>
-                        <form asp-controller="AdminProduct" asp-action="Delete" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                       @*  <form asp-controller="AdminProduct" asp-action="Delete" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
                                     <input type="hidden" name="id" value="@product.Id" />
                                     <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                                </form>
+                                </form> *@
+                        <button type="button" class="btn btn-danger btn-sm btn-sil" data-id="@product.Id">Sil</button>
                             </div>
                     
                 </div>
@@ -36,3 +37,33 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Sil butonuna tıklandığında çalışır
+            $(".btn-sil").click(function () {
+                let productId = $(this).data("id"); // Butondan ID'yi al
+                let cardId = "#card-" + productId; // Silinecek kartın ID'sini oluştur
+
+                if (confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
+                    // AJAX isteği başlat
+                    $.ajax({
+                        url: "/AdminProduct/Delete", // UI Controller'ındaki Delete metodu
+                        type: "POST",
+                        data: { id: productId },
+                        success: function () {
+                            // Controller'dan "Ok" (200) cevabı gelirse burası çalışır
+                            $(cardId).fadeOut(500, function() {
+                                $(this).remove(); // Kartı ekrandan pürüzsüzce kaldır
+                            });
+                        },
+                        error: function () {
+                            alert("Ürün silinirken bir hata oluştu!");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

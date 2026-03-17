@@ -6,8 +6,8 @@
           
             <h1 class="mb-5"><span class="" style="color:darkblue">Rezervasyon</span> Formu</h1>
         </div>
-
-        <form method="post"  asp-action="AddBooking" asp-controller="Booking">
+        <div id="bookingContainer">
+        <form id="bookingForm">
           
             <div class="row g-3">
 
@@ -85,5 +85,44 @@
 
             </div>
         </form>
+        </div>
+   
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#bookingForm").submit(function (e) {
+            e.preventDefault(); // Form gönderimini durdur
+
+            var formData = {
+                Name: $("#Name").val(),
+                UserMail: $("#UserMail").val(),
+                PhoneNumber: $("#PhoneNumber").val(),
+                BookingDay: $("#BookingDay").val(),
+                BookingTime: $("#BookingTime").val(),
+                RestaurantName: $("#RestaurantName").val(),
+                NumberOfPeople: $("#NumberOfPeople").val(),
+                Message: $("#Message").val()
+            };
+
+            $.ajax({
+                url: '/Booking/AddBooking',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function () {
+                    // Formu içeren container'ı tamamen değiştir
+                    $("#bookingContainer").html(`
+                        <h2 style="color:green; font-size:2rem; font-weight:bold; text-align:center;">
+                            ✅ REZERVASYON BAŞVURUNUZ İLETİLDİ
+                        </h2>
+                    `);
+                },
+                error: function (xhr, status, error) {
+                    alert("Bir hata oluştu: " + error);
+                }
+            });
+        });
+    });
+</script>
