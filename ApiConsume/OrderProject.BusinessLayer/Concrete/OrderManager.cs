@@ -1,0 +1,80 @@
+﻿using OrderProject.BusinessLayer.Abstract;
+using OrderProject.DataAccessLayer.Abstract;
+using OrderProject.DtoLayer.OrderDto1;
+using OrderProject.EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OrderProject.BusinessLayer.Concrete
+{
+    public class OrderManager : IOrderService
+    {
+        private readonly IOrderDal _orderDal;
+        public OrderManager(IOrderDal orderDal)
+        {
+            _orderDal = orderDal;
+        }
+        public void TDelete(Order t)
+        {
+           _orderDal.Delete(t);
+        }
+
+        public Order TGetById(int id)
+        {
+           return _orderDal.GetById(id);
+        }
+
+        public List<Order> TGetList()
+        {
+            return _orderDal.GetList(); 
+        }
+
+        public List<OrderUserDto> TGetOrder(int userId)
+        {
+            return _orderDal.GetOrderUser(userId);
+        }
+
+        public OrderDetailDto TGetOrderDetails(int id)
+        {
+            return _orderDal.GetOrderDetails(id);
+        }
+
+        public List<ResultOrdersDto> TGetOrders()
+        {
+            return _orderDal.GetOrders();
+        }
+
+        public void TInsert(Order t)
+        {
+            _orderDal.Insert(t);
+        }
+
+        public void TOrderStatusChangeApproved(int id)
+        {
+            _orderDal.OrderStatusChangeApproved(id);
+        }
+
+        public void TOrderStatusChangeDeliver(int id)
+        {
+            _orderDal.OrderStatusChangeDeliver(id);
+        }
+
+        public void TOrderStatusChangePrepare(int id)
+        {
+            _orderDal.OrderStatusChangePrepare(id);
+        }
+
+        public void TOrderStatusChangeWay(int id)
+        {
+            _orderDal.OrderStatusChangeWay(id);
+        }
+
+        public void TUpdate(Order t)
+        {
+            _orderDal.Update(t);
+        }
+    }
+}

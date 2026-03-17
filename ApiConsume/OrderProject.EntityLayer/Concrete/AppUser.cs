@@ -12,12 +12,15 @@ namespace OrderProject.EntityLayer.Concrete
 
         public string Name { get; set; }
         public string LastName { get; set; }
+
+ 
         public string FullName
         {
             get 
             {
                 return $"{Name} {LastName}";
             }
+           
         }
         public List<Order> Orders { get; set; }
     }

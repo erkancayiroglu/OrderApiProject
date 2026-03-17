@@ -1,0 +1,28 @@
+﻿using HotelProject.DataAccessLayer.Abstract;
+using OrderProject.DtoLayer.OrderDto1;
+using OrderProject.EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OrderProject.DataAccessLayer.Abstract
+{
+    public interface IOrderDal: IGenericDal<Order>
+    {
+        public OrderDetailDto GetOrderDetails(int id);
+
+        public List<OrderUserDto> GetOrderUser(int userId);
+
+        public List<ResultOrdersDto> GetOrders();
+
+        public void OrderStatusChangeApproved(int id);
+
+        public void OrderStatusChangePrepare(int id);
+
+        public void OrderStatusChangeWay(int id);
+
+        public void OrderStatusChangeDeliver(int id);
+    }
+}

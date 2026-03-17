@@ -1,0 +1,48 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    <form asp-controller="AdminProduct" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="file" name="imageFile" id="imageFile" class="form-control" />
+        </div>
+        <div>
+            <img src="~/productImages/@(Model?.ImageUrl ?? "default.png")"
+                 alt=""
+                 style="width:100px" />
+
+            <input type="hidden" asp-for="ImageUrl" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Price"></label>
+            <textarea asp-for="Price" class="form-control"></textarea>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <select asp-for="CategoryId"
+                class="form-control"
+                asp-items="@ViewBag.CategorySelectList as SelectList">
+
+         
+            <option value="">-- Kategori Seçiniz --</option>
+        </select>
+
+
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </form>
+</div>
+

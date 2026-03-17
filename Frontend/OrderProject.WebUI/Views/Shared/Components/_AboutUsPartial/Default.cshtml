@@ -1,0 +1,78 @@
+﻿@model List<ResultAboutDto>
+
+@foreach (var item in Model)
+{
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <div class="col-lg-6">
+
+                    <h1 class="mb-4 text-darkblue">@item.Title</h1>
+
+                    <p class="mb-4">
+                        Ateşin başında ustalıkla hazırlanan kebaplarımız,
+                        her gün taze ürünlerle sofranıza ulaşıyor.
+                    </p>
+
+                    <div class="row text-center gy-4">
+
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-user-tie fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.StaffCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                     PERSONEL
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-fire fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.CustomerCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                    MÜŞTERİ
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="bg-light rounded-circle d-flex flex-column
+                        justify-content-center align-items-center mx-auto"
+                                 style="width:150px;height:150px;">
+                                <i class="fa fa-store fa-2x text-dark mb-2"></i>
+                                <h4 class="mb-0 fw-bold text-dark">
+                                    @item.RestourantCount
+                                </h4>
+                                <small class="fw-semibold text-dark">
+                                    ŞUBE
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9 rounded shadow">
+                        <iframe src="https://www.youtube.com/embed/32T8Oja5Yn4"
+                                title="YouTube video player"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

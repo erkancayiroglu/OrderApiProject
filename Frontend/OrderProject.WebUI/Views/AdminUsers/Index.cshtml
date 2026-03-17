@@ -1,0 +1,36 @@
+﻿@model List<ResultUsersDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+          
+                <th>Kullanıcı Adı</th>
+                <th>Adı ve Soyadı</th>
+         
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in Model)
+            {
+                <tr>
+
+               
+                    <td>@user.UserName</td>
+                    <td>@user.FullName</td>
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<a href="/Register/Index/" class="btn btn-primary">Yeni Kullanıcı Kaydı</a>
+

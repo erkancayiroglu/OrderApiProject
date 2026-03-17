@@ -8,10 +8,10 @@ namespace OrderProject.EntityLayer.Concrete
     public class Order
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
 
-        //public AppUser appUser { get; set; }
+        public AppUser User { get; set; }
 
 
         public DateTime OrderDate { get; set; } = DateTime.Now;
@@ -19,6 +19,8 @@ namespace OrderProject.EntityLayer.Concrete
 
         public string OrderStatus { get; set; }
 
-        public List<SepetItem> SepetItems { get; set; }
+    
+
+        public List<OrderBook> OrderBooks { get; set; }
     }
 }

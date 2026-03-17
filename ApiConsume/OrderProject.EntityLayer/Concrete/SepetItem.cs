@@ -11,15 +11,18 @@ namespace OrderProject.EntityLayer.Concrete
         public int Id { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
-      
+
+        public int UserId { get; set; }
+
+        public AppUser User { get; set; }
+
         public int Piece { get; set; }
 
-        public int TotalPrice 
-        { 
-            get
-            {
-                return (int)(Product != null ? Product.Price * Piece : 0);
-            }
-        }
+       
+
+        public decimal TotalPrice { get; set; }
+
+
+
     }
 }

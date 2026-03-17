@@ -17,9 +17,9 @@ namespace OrderProject.EntityLayer.Concrete
         public string ImageUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
-        public Category category { get; set; }
+        public Category Category { get; set; }
 
 
 

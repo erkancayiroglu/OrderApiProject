@@ -1,0 +1,62 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<h1>Category</h1>
+<div class="table-responsive">
+   @{
+    int Count = 1; // Sayaç başlangıcı
+}
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+              
+                <div class="mb-3">
+
+                    <h2>Kategoriler</h2>
+                    <a class="btn btn-success" asp-action="AddCategory">Kategori Ekle</a>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category ID</th>
+                                <th>Name</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                             @foreach (var category in Model)
+                                {
+                            <tr>
+                               
+                                    <th>@category.Id</th>
+                                    <td>@category.Name</td>
+                                    <td>
+                                        <a asp-controller="AdminCategory" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-primary btn-sm me-2">Düzenle</a>
+                                    </td>
+                                    <td>
+                                        <form asp-controller="AdminCategory" asp-action="Delete" method="post" onsubmit="return confirm('Emin misiniz?')" style="display:inline;">
+                                            <input type="hidden" name="id" value="@category.Id" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                                        </form>
+                                    </td>
+                                   
+                             
+                               
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
